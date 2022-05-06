@@ -1,5 +1,6 @@
 package hu.nye.progkorny.emsys.model;
 
+
 import javax.persistence.Id;
 
 import javax.persistence.Column;
@@ -7,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-@Entity(name = "employess")
+@Entity(name = "employees")
 public class Employee {
 
     @Id
@@ -15,8 +16,8 @@ public class Employee {
     private long id;
     @Column(name = "first_name")
     private String firstName;
-    @Column(name = "second_name")
-    private String secondName;
+    @Column(name = "last_name")
+    private String lastName;
     @Column(name = "email")
     private String email;
 
@@ -36,12 +37,12 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
