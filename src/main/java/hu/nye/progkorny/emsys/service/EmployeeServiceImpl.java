@@ -3,6 +3,10 @@ package hu.nye.progkorny.emsys.service;
 import hu.nye.progkorny.emsys.model.Employee;
 import hu.nye.progkorny.emsys.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -28,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee getEmployeeById(long id) {
         Optional<Employee> optional = employeeRepository.findById(id);
-        Employee employee = null;
+        Employee employee;
         if (optional.isPresent()) {
             employee = optional.get();
         }
@@ -42,5 +46,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteEmployeeById(long id) {
         this.employeeRepository.deleteById(id);
     }
+    @Override
+    public Page<Employee> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending():
+            Sort.by(sortField).descending();
+
+        Pageable pageable = PageRequest.of(pageNo - 1 ,pageSize, sort);
+        return this.employeeRepository.findAll(pageable);
+    }
+
 
 }
