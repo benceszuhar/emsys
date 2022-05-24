@@ -41,7 +41,7 @@ jobs:
           # Overwrite local artifact version
           mvn -B versions:set -DnewVersion="$version" --file pom.xml
           mvn -B deploy --file pom.xml
-          cp "target/roleplay-${version}.jar" "target/roleplay.jar"
+          cp "target/emsys-${version}.jar" "target/emsys.jar"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Log in to the Container registry
