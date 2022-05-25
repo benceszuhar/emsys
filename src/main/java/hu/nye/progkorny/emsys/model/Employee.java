@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 @Entity(name = "employees")
 public class Employee {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,6 +21,7 @@ public class Employee {
     private String lastName;
     @Column(name = "email")
     private String email;
+
 
     public long getId() {
         return id;
@@ -52,4 +54,5 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

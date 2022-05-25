@@ -1,7 +1,8 @@
-package hu.nye.progkorny.emsys.service;
+package hu.nye.progkorny.emsys.service.impl;
 
 import hu.nye.progkorny.emsys.model.Employee;
 import hu.nye.progkorny.emsys.repository.EmployeeRepository;
+import hu.nye.progkorny.emsys.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -46,6 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteEmployeeById(long id) {
         this.employeeRepository.deleteById(id);
     }
+
     @Override
     public Page<Employee> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending():
