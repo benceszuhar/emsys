@@ -1,6 +1,8 @@
 package hu.nye.progkorny.emsys.model;
 
 
+import lombok.*;
+
 import javax.persistence.Id;
 
 import javax.persistence.Column;
@@ -8,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+@Data
+@AllArgsConstructor
+@Builder
 @Entity(name = "employees")
 public class Employee {
 
@@ -15,12 +20,16 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
+
+    public Employee() {
+
+    }
 
 
     public long getId() {
